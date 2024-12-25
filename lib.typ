@@ -62,7 +62,7 @@
   show figure.where(
     kind: image
   ): it => {
-    set text(font: ("STKaiti"), size: zh(-5))
+    set text(font: ("Times New Roman", "STKaiti"), size: zh(-5))
     it
   } 
 
@@ -71,8 +71,8 @@
     kind: table
   ): it => {
     set figure.caption(position: top)
-    set text(font: ("SimHei"))
-    strong(it)
+    set text(font: ("Times New Roman", "SimHei"), weight: "bold")
+    it
   } 
 
   // Figure 上面空出一个空格
@@ -86,15 +86,15 @@
   // 标题的字体格式
   set heading(numbering: "1.1.1")
   show heading.where(level: 1): it => {
-    set text(font: ("SimHei"), size: zh(4))
+    set text(font: ("Times New Roman", "SimHei"), size: zh(4))
     pad(top: 0.5em, bottom: 0.5em, [
       #strong(it)
     ])
     fake-par // 关键的换行
   } 
   show heading.where(level: 2): it => {
-    set text(font: ("SimHei"), size: zh(5))
-      pad( [
+    set text(font: ("Times New Roman", "SimHei"), size: zh(5))
+    pad( [
       #strong(it)
     ])
     fake-par // 关键的换行
@@ -102,7 +102,7 @@
 
   // 表格内字体设置
   show table.cell: it => {
-    set text(font: ("Simsun"), size: zh(-5))
+    set text(font: ("Times New Roman", "Simsun"), size: zh(-5), weight: "regular")
     it
   }
 
@@ -137,7 +137,7 @@
     }
 
     linebreak()
-    set text(size: zh(-5), font: ("STKaiti"))
+    set text(size: zh(-5), font: ("Times New Roman", "STKaiti"))
     index = 1
     if isEng { "(" } else { "（" }
     for value in info {
@@ -159,7 +159,7 @@
     set text(size: zh(-5))
     pad(left: 2em, right: 2em, {
       text(font: ("Times New Roman", "SimHei"))[*#leading*]
-      text(font: ("STKaiti"))[#string]
+      text(font: ("Times New Roman", "STKaiti"))[#string]
     })
   }
 
