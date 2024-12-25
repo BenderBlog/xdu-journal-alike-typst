@@ -99,6 +99,13 @@
     ])
     fake-par // 关键的换行
   }
+  show heading.where(level: 3): it => {
+    set text(font: ("Times New Roman", "Fangsong"), size: zh(5), weight: "regular")
+    pad( [
+      #it
+    ])
+    fake-par // 关键的换行
+  }
 
   // 表格内字体设置
   show table.cell: it => {
