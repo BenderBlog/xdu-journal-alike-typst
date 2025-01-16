@@ -208,10 +208,10 @@ $ f(x) = e^x / (sum_j e^j) $<2>
 
 #let width_wrong_data = 70%
 #subpar.grid(
-  figure(image("img/1->4.png", width: width_wrong_data), caption: [1误识别为4]), <wrong-data-a>,
-  figure(image("img/1->7.png", width: width_wrong_data), caption: [1误识别为7]), <wrong-data-b>,
-  figure(image("img/2->8.png", width: width_wrong_data), caption: [2误识别为8]), <wrong-data-c>,
-  figure(image("img/7->1.png", width: width_wrong_data), caption: [7误识别为1]), <wrong-data-d>,
+  figure(image("img/1-4.png", width: width_wrong_data), caption: [1误识别为4]), <wrong-data-a>,
+  figure(image("img/1-7.png", width: width_wrong_data), caption: [1误识别为7]), <wrong-data-b>,
+  figure(image("img/2-8.png", width: width_wrong_data), caption: [2误识别为8]), <wrong-data-c>,
+  figure(image("img/7-1.png", width: width_wrong_data), caption: [7误识别为1]), <wrong-data-d>,
   columns: (1fr, 1fr),
   caption: [四次错误识别],
   label: <wrong-data>,
@@ -224,4 +224,3 @@ $ f(x) = e^x / (sum_j e^j) $<2>
 通过本次研究，我们进一步了解了神经网络学习的含义，对课本上的定义有了更深的了解。在构建神经网络的过程中，我对卷积、最大池等在图像分类中的作用有了更深的认识。
 
 同时，训练出来的模型能够解决实际问题。该模型是基于学习缴费系统验证码而训练的，在合适的时候，该系统能够辅助完成电费查询的自动化，从而能够提醒缴纳电费。
-

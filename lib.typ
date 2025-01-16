@@ -10,6 +10,8 @@
   keyword_eng,
   doc,
   bibpath,
+  enableMirrorMargins: false, // 控制是否启用镜像页边距, 也就是奇偶页页边距不同
+  enableJustifyPars: true, // 控制正文是否启用两端对齐
 ) = {
   import "@preview/pointless-size:0.1.0": zh
   import "@preview/cuti:0.2.1": show-cn-fakebold
@@ -28,22 +30,41 @@
     header: {
       set text(size: zh(-5))
       context {
-        if calc.even(counter(page).get().first()) {    
-          counter(page).display("1")
+        // 第一页格式固定
+        if counter(page).get().first() == 1 {
           h(1fr)
-          title_chs
+          text(title_chs, weight: "bold", size: 9pt)
+          h(1fr)
+          linebreak()
+          h(1fr)
+          text(title_eng, weight: "bold", size: 9pt)
           h(1fr)
         } else {
-          h(1fr)
-          title_chs
-          h(1fr)
-          counter(page).display("1")
+          // 奇数页和偶数页的页眉不同
+          if calc.even(counter(page).get().first()) {    
+            counter(page).display("1")
+            h(1fr)
+            text(title_chs, size: 9pt)
+            h(1fr)
+          } else {
+            // 添加除第一页外的奇数页的 作者：标题
+            h(1fr)
+            author_chs.at(0).at("name")
+            text("等：")
+            text(title_chs)
+            h(1fr)
+            counter(page).display("1").trim()
+          }
         }
       }
       line(length: 100%, stroke: (thickness: 0.5pt))
     },
-    // 奇偶页不同
-    margin: (inside: 4.17cm, outside: 3.17cm, y: 2.54cm),
+    margin: if enableMirrorMargins {
+      // 奇偶页页边距不同
+      (inside: 4.17cm, outside: 3.17cm, y: 2.54cm)
+    } else {
+      (x:3.17cm, y: 2.54cm)
+    },
     number-align: center,
   )
   set text(size: zh(5), font: ("Times New Roman", "Simsun"), lang: "zh")
@@ -181,11 +202,12 @@
   abstract("Keywords: ", keyword_eng)
   linebreak()
   
-  doc
+  if enableJustifyPars {
+    set par(justify: true)
+  }
+  text(doc)
 
   bilingual-bibliography(
     bibliography: bibpath
   )
 }
-
-
