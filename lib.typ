@@ -10,8 +10,8 @@
   keyword_eng,
   doc,
   bibpath,
-  enableMirrorMargins: true, // 控制是否启用镜像页边距, 也就是奇偶页页边距不同
-  enableJustifyPars: false, // 控制正文是否启用两端对齐
+  enableMirrorMargins: false, // 控制是否启用镜像页边距, 也就是奇偶页页边距不同
+  enableJustifyPars: true, // 控制正文是否启用两端对齐
 ) = {
   import "@preview/pointless-size:0.1.0": zh
   import "@preview/cuti:0.2.1": show-cn-fakebold
@@ -48,21 +48,12 @@
             h(1fr)
           } else {
             // 添加除第一页外的奇数页的 作者：标题
-            align(center, block[
-              #h(1fr)
-              #for author_index in range(author_chs.len()) {
-              author_chs.at(author_index).at("name")
-              if author_index != author_chs.len() - 1 {
-                text("，")
-              } else {
-                text("等：")
-              }
-            }
-            #text(title_chs)
-            #h(1fr)
-            #counter(page).display("1").trim()
-            ]
-            )
+            h(1fr)
+            author_chs.at(0).at("name")
+            text("等：")
+            text(title_chs)
+            h(1fr)
+            counter(page).display("1").trim()
           }
         }
       }
