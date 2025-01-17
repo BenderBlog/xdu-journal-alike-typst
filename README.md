@@ -11,7 +11,7 @@
 这点对于非 Windows 用户来说比较重要，电脑需要安装：
 
  - Times New Roman
- - Simsum 宋体
+ - Simsum 宋体 NSimsun 新宋体
  - SimHei 黑体
  - STKaiti 华文楷体
  - Fangsong 仿宋
@@ -27,3 +27,6 @@
 6. 人家收稿必须要 Word 文件，所以用这个写正经文章不合适:P
 
 所以，如果您的大作业非得要求用论文格式的话，这个感觉能凑合一下。
+
+## PR 者注意
+所有代码必须包含中文注释！

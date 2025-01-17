@@ -1,6 +1,7 @@
 #import "../lib.typ": set_style
 
 #import "@preview/subpar:0.2.0"
+#import "@preview/cetz:0.3.0"
 
 /// 文章标题等基本数据
 #let title_chs = "基于卷积神经网络的四位数字验证码识别方法"
@@ -224,3 +225,275 @@ $ f(x) = e^x / (sum_j e^j) $<2>
 通过本次研究，我们进一步了解了神经网络学习的含义，对课本上的定义有了更深的了解。在构建神经网络的过程中，我对卷积、最大池等在图像分类中的作用有了更深的认识。
 
 同时，训练出来的模型能够解决实际问题。该模型是基于学习缴费系统验证码而训练的，在合适的时候，该系统能够辅助完成电费查询的自动化，从而能够提醒缴纳电费。
+
+= Typst CetZ 绘画展示
+
+#figure(
+  text(
+    font: ("Times New Roman", "NSimsun"),
+    lang: "zh",
+    cetz.canvas({
+      import cetz.draw: *
+      let height = 6
+      let center = (0,6,0)
+      ortho(
+        z:180deg,
+        y:-70deg,
+        x:20deg,
+        {
+        on-xz({
+          line((-8,0,0),(6,0,0), mark: (end: "straight"),name: "X")
+          line((4,0,height),(-4,0,height), mark: (start: "straight"))
+          line((0,0,height),(0,0,0),(0,10,0), mark: (end: "straight"),name:"Y")
+          content("X.end", $X$, padding: .2, anchor: "west")
+          content("Y.end", $Y$, padding: .2, anchor: "west")
+
+          line((2,0,height),(2,0,0),(2,10,0), stroke: (dash: "dashed"))
+          line((-2,0,height),(-2,0,0),(-2,10,0), stroke: (dash: "dashed"))
+
+          line((-0.5,0,0),(-0.5,10,0), stroke: (dash: "dashed"))
+          line((0.5,0,0),(0.5,10,0), stroke: (dash: "dashed"))
+
+          line((0,0,height),center)
+          line((-2,0,height),center)
+          line((2,0,height),center)
+
+          line(
+            (0.5,0,height + 0.25),
+            (0.5,0,height - 0.25),
+            (-0.5,0,height - 0.25),
+            (-0.5,0,height + 0.25),
+            close: true,
+            name: "c"
+          )
+          line(
+            (2.5,0,height + 0.25),
+            (2.5,0,height - 0.25),
+            (1.5,0,height - 0.25),
+            (1.5,0,height + 0.25),
+            close: true,
+            name: "b"
+          )
+          line(
+            (-2.5,0,height + 0.25),
+            (-2.5,0,height - 0.25),
+            (-1.5,0,height - 0.25),
+            (-1.5,0,height + 0.25),
+            close: true,
+            name: "a"
+          )
+          content((-1.4,0,height+0.8), $a$)
+          content((0.7,0,height+0.8), $b$)
+          content((2.7,0,height+0.8), $c$)
+
+          line((-5,5,0),(5,5,0), stroke: (dash: "dashed"))
+          line((-5,7,0),(5,7,0), stroke: (dash: "dashed"))
+
+          line((0,0,0.25),(0,0.25,0.25),(0,0.25,0))
+          line((2,0,0.25),(2,0.25,0.25),(2,0.25,0))
+          line((-2,0,0.25),(-2,0.25,0.25),(-2,0.25,0))
+          line((2.3,0,0),(2.3,0.25,0),(2,0.25,0))
+
+          circle((0,6,0),radius: (2.5,1))
+          circle((-2,6,0),radius: (2.5,1))
+          circle((2,6,0),radius: (2.5,1))
+
+          line(
+            center,
+            (-6,5,1),
+            stroke: (dash: "dashed"),
+            name: "O"
+          )
+          content("O.end", "成像目标点O", padding: .2, anchor: "north")
+
+          line(
+            (-1,6.5,0),
+            (-1,9,2),
+            stroke: (dash: "dashed"),
+            mark: (start: "straight"),
+            name: "cover"
+          )
+          content("cover.end", "辐照带", padding: .2, anchor: "west")
+
+          line(
+            (-8,0,0),
+            (-8,1,2),
+            stroke: (dash: "dashed"),
+            mark: (start: "straight"),
+            name: "arrow"
+          )
+          content("arrow.end", "方位向轴", padding: .2, anchor: "north")
+
+          line(
+            (2,0,height+0.5),
+            (0,0,height+2),
+            stroke: (dash: "dashed"),
+            mark: (start: "straight"),
+          )
+          line(
+            (0,0,height+0.5),
+            (0,0,height+2),
+            stroke: (dash: "dashed"),
+            mark: (start: "straight"),
+          )
+          line(
+            (-2,0,height+0.5),
+            (0,0,height+2),
+            stroke: (dash: "dashed"),
+            mark: (start: "straight"),
+          )
+          content((0,0,height+2.25), "雷达位置", anchor: "north")
+
+          line(
+            (-2.5,1,0),
+            (-0.5,1,0),
+            stroke: (dash: "dashed"),
+            mark: (end: "straight"),
+          )
+          line(
+            (2.5,1,0),
+            (0.5,1,0),
+            stroke: (dash: "dashed"),
+            mark: (end: "straight"),
+          )
+          content((3.25,1.5,0), $\u{0394} X$, anchor: "north")
+
+        })
+      })
+    }),
+  ),
+  caption: [SAR示意图],
+)
+
+#figure(
+  text(
+    font: ("Times New Roman", "NSimsun"),
+    lang: "zh",
+  cetz.canvas({
+    import cetz.draw: *
+
+    grid((0,-3), (6,3), step: .5)
+
+    // center (5,1)
+    line((-6,1), (-0.5,1))
+    line(
+      (-5.5,1.25),
+      (-4.75,1.25),
+      (-4.5,1),
+      (-4.75,0.75),
+      (-5.5,0.75),
+      close: true,
+      fill: color.white,
+    )
+
+    line((-5,2.5),(-3,2.5),mark:(end: "straight"),name: "speed")
+    content(
+      ("speed.start", 50%, "speed.end"),
+      padding: .2,
+      anchor: "south",
+      $v$
+    )
+
+    line(
+      (-4.5,1),
+      (2,-1),
+    )
+    line(
+      (-4.5,1),
+      (2.5,-2),
+    )
+    line(
+      (-4.5,1),
+      (3,-0.5),
+    )
+
+    line(
+      (7,1.5),
+      (7,-2),
+      mark: (end: "straight"),
+      name: "N"
+    )
+    content(
+      ("N.start", 50%, "N.end"),
+      padding: .2,
+      anchor: "west",
+      "距\n离\n像\n素\n点"
+    )
+    content(
+      ("N.start"),
+      padding: .2,
+      anchor: "south",
+      "N"
+    )
+
+    line(
+      (1.5,-4),
+      (5,-4),
+      mark: (end: "straight"),
+      name: "M"
+    )
+    content(
+      ("M.start", 50%, "M.end"),
+      padding: .2,
+      anchor: "south",
+      "距离像素点"
+    )
+    content(
+      ("M.start"),
+      padding: .2,
+      anchor: "east",
+      "M"
+    )
+
+    content(
+      (3,3.5),
+      "成像区域"
+    )
+  })),
+  caption: [BP成像示例图],
+)
+
+#figure(
+  text(
+    font: ("Times New Roman", "NSimsun"),
+    lang: "zh",
+    cetz.canvas({
+      import cetz.draw: *
+      ortho(
+        z:180deg,
+        y:-70deg,
+        x:20deg,
+        {
+        on-xz({
+          line((-8,0,0),(6,0,0), mark: (end: "straight"),name: "X")
+          line((0,0,6),(0,0,0),(0,10,0), mark: (start: "straight", end: "straight"),name:"Y")
+          content("X.end", $X$, padding: .2, anchor: "west")
+          content("Y.end", $Y$, padding: .2, anchor: "south")
+          content("Y.start", $Z$, padding: .2, anchor: "east")
+
+          circle((-2,0,5),radius:(0.13,0.09),br:none,fill:color.green,name:"trans")
+          content("trans", "            发送雷达", padding: .2, anchor: "north")
+          line((-2,0,5),(-2,9,5))
+          circle((2,-2,5),radius:(0.13,0.09),anchor:none,fill:color.green,name:"recei")
+          content("recei", "接收雷达", padding: .2, anchor: "north")
+          line((2,-2,5),(2,9,5))
+
+          circle((0,7,0.25),radius:(2,0.5),fill:color.white)
+          circle((0,7,0.2),radius:(2,0.5),fill:color.black)
+          circle((0,7,0.15),radius:(2,0.5),fill:color.black)
+          circle((0,7,0.1),radius:(2,0.5),fill:color.black)
+          circle((0,7,0.05),radius:(2,0.5),fill:color.black)
+          circle((0,7,0),radius:(2,0.5),fill:color.black)
+
+          rect((4,8,2.2),(3,8.5,2.2),fill:color.white)
+          line((4,8,2.2),(4,8,1.6),(4,8.5,1.6),(4,8.5,2.2),close: true,fill:color.white)
+          line((3,8.5,2.2),(3,8.5,1.6),(4,8.5,1.6),(4,8.5,2.2),close: true,fill:color.white)
+
+          line((5,8.8,2.7),(5,8.8,3.4))
+          content((5,10,3.5), "舰船目标")
+        })
+      })
+    }),
+  ),
+  caption: [双基SAR成像场景],
+)

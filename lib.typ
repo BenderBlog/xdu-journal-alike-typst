@@ -67,7 +67,7 @@
     },
     number-align: center,
   )
-  set text(size: zh(5), font: ("Times New Roman", "Simsun"), lang: "zh")
+  set text(size: zh(5), font: ("Times New Roman", "NSimsun", "Simsun"), lang: "zh")
 
   // 解决缩进问题，同时解决行尾间距
   set par(first-line-indent: 2em,spacing: 0.65em)
@@ -130,7 +130,7 @@
 
   // 表格内字体设置
   show table.cell: it => {
-    set text(font: ("Times New Roman", "Simsun"), size: zh(-5), weight: "regular")
+    set text(font: ("Times New Roman", "NSimsun", "Simsun"), size: zh(-5), weight: "regular")
     it
   }
 
